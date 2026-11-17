@@ -1,0 +1,249 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --void-black: #000000;
+  --ink-gray: #1a1815;
+  --sickly-cream: #e8e0d0;
+  --bone-white: #f0ede5;
+  --dried-blood: #6b0f0f;
+  --crimson-bright: #9e1b1b;
+  --rotting-green: #2a3a2a;
+  --sickly-yellow: #c4a77d;
+}
+
+@layer base {
+  html {
+    background-color: #000000;
+    color: #f0ede5;
+    font-family: 'IBM Plex Mono', monospace;
+    scroll-behavior: auto;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #000000;
+    color: #f0ede5;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #6b0f0f;
+    color: #f0ede5;
+  }
+}
+
+.font-serif-display {
+  font-family: 'Cormorant Garamond', 'Shippori Mincho', Georgia, serif;
+}
+
+.font-jp {
+  font-family: 'Shippori Mincho', 'Cormorant Garamond', serif;
+}
+
+.font-mono-body {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.font-hand {
+  font-family: 'Rock Salt', cursive;
+}
+
+/* Aged Japanese archival paper texture */
+.aged-paper {
+  background-color: #e8e0d0;
+  background-image:
+    radial-gradient(circle at 20% 25%, rgba(196, 167, 125, 0.25) 0%, transparent 55%),
+    radial-gradient(circle at 80% 75%, rgba(107, 15, 15, 0.08) 0%, transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(26, 24, 21, 0.025) 0px,
+      rgba(26, 24, 21, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  color: #1a1815;
+}
+
+/* Manga halftone dot overlay */
+.halftone-overlay {
+  background-image: radial-gradient(rgba(240, 237, 229, 0.08) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+.halftone-dark {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.14) 1px, transparent 1px);
+  background-size: 5px 5px;
+}
+
+/* Heavy film grain overlay */
+@keyframes grainFlicker {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2%, 1.5%); }
+  40% { transform: translate(1.5%, -2%); }
+  60% { transform: translate(-1%, -1.5%); }
+  80% { transform: translate(2%, 1%); }
+}
+
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.55'/%3E%3C/svg%3E");
+  opacity: 0.095;
+  animation: grainFlicker 0.22s steps(2) infinite;
+  pointer-events: none;
+}
+
+/* Subtle VHS scanlines */
+.vhs-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0px,
+    rgba(255, 255, 255, 0) 2px,
+    rgba(0, 0, 0, 0.28) 3px,
+    rgba(255, 255, 255, 0.025) 4px
+  );
+  pointer-events: none;
+}
+
+/* Slow breathing portrait animation */
+@keyframes horrorBreathe {
+  0%, 100% {
+    transform: scale(1) translateZ(0);
+  }
+  50% {
+    transform: scale(1.03) translateZ(0);
+  }
+}
+
+.animate-breathe {
+  animation: horrorBreathe 6s ease-in-out infinite;
+}
+
+/* Slow hypnotic spiral rotation */
+@keyframes spiralSpinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spiral-slow {
+  animation: spiralSpinSlow 42s linear infinite;
+}
+
+.animate-spiral-reverse {
+  animation: spiralSpinSlow 60s linear infinite reverse;
+}
+
+/* Subtle irregular text flicker */
+@keyframes horrorFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.35;
+  }
+}
+
+.animate-horror-flicker {
+  animation: horrorFlicker 7s infinite;
+}
+
+/* Crawling micro-shift for corridor menu items */
+@keyframes letterCrawl {
+  0%, 90%, 100% {
+    transform: translate(0, 0);
+  }
+  92% {
+    transform: translate(1px, -1px);
+  }
+  95% {
+    transform: translate(-1px, 1px);
+  }
+}
+
+.hover-crawl:hover span {
+  display: inline-block;
+  animation: letterCrawl 1.6s steps(1) infinite;
+}
+
+/* Infinite press marquee */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 34s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Ink bleed text shadow */
+.ink-bleed {
+  text-shadow:
+    0 0 12px rgba(240, 237, 229, 0.16),
+    0 3px 18px rgba(107, 15, 15, 0.45),
+    0 8px 28px rgba(0, 0, 0, 0.9);
+}
+
+/* Ink click ripple */
+@keyframes inkRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.15);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
+.animate-ink-ripple {
+  animation: inkRipple 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Focus ring */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #c4a77d;
+  outline-offset: 3px;
+}
+
+/* Respect reduced motion globally & via .reduced-motion toggle */
+@media (prefers-reduced-motion: reduce) {
+  .film-grain,
+  .animate-breathe,
+  .animate-spiral-slow,
+  .animate-spiral-reverse,
+  .animate-horror-flicker,
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+
+html.reduced-motion .film-grain,
+html.reduced-motion .animate-breathe,
+html.reduced-motion .animate-spiral-slow,
+html.reduced-motion .animate-spiral-reverse,
+html.reduced-motion .animate-horror-flicker,
+html.reduced-motion .animate-marquee {
+  animation: none !important;
+}
+
+/* Hide custom cursor on touch/small devices */
+@media (hover: none), (pointer: coarse) {
+  .custom-spiral-cursor {
+    display: none !important;
+  }
+}

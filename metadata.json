@@ -1,0 +1,8 @@
+{
+  "name": "THE SPIRAL GALLERY — 螺旋の回廊",
+  "description": "A cursed digital art exhibition inspired by Japanese horror manga. Step inside the spiral.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
